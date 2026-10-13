@@ -1,0 +1,20 @@
+{
+  "random_seed": 42,
+  "test_size": 0.2,
+  "stratified": true,
+  "n_train": 320,
+  "n_test": 80,
+  "class_counts": {
+    "train": {
+      "ckd": 200,
+      "notckd": 120
+    },
+    "test": {
+      "ckd": 50,
+      "notckd": 30
+    }
+  },
+  "test_ids_sha256": "690c3f3a60f1b54274989782ed8a0dd462cf2ce7698d347dbe15b1ff6a4f0db7",
+  "locked_at_utc": "2026-10-13T17:21:31+00:00",
+  "note": "Test partition locked before any tuning; it is used only for final evaluation."
+}

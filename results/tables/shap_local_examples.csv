@@ -1,0 +1,4 @@
+example,record_id,true_class,predicted_class,p_ckd,model_output,n_imputed,figure,top_contributions
+typical_ckd,26,CKD,CKD,0.9933333333333333,0.9933333333333333,1,shap_waterfall_typical_ckd_26.png,Serum creatinine = 2.4 mg/dL: +0.067; Specific gravity = 1.015: +0.058; Haemoglobin = 11.6 g/dL: +0.049; Hypertension = yes: +0.039; Diabetes mellitus = yes: +0.036
+typical_non_ckd,270,Non-CKD,Non-CKD,0.0033333333333333335,0.0033333333333333335,0,shap_waterfall_typical_non_ckd_270.png,Haemoglobin = 14.3 g/dL: -0.113; Serum creatinine = 1.1 mg/dL: -0.107; Specific gravity = 1.025: -0.106; Albumin grade = 0: -0.061; Hypertension = no: -0.044
+borderline,324,Non-CKD,Non-CKD,0.39666666666666667,0.39666666666666667,4,shap_waterfall_borderline_324.png,Serum creatinine = 0.7 mg/dL: -0.089; Specific gravity = 1.02: -0.066; Sodium = 150 mEq/L: -0.063; Haemoglobin = 12.6 g/dL (imputed): +0.045; Blood urea = 15 mg/dL: -0.035

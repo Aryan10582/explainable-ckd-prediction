@@ -1,0 +1,60 @@
+{
+  "generated_at_utc": "2026-10-13T18:53:24+00:00",
+  "checks": [
+    {
+      "check": "Train and test record IDs are disjoint",
+      "passed": true,
+      "detail": "0 shared IDs"
+    },
+    {
+      "check": "No identical feature vector appears in both partitions",
+      "passed": true,
+      "detail": "0 test records"
+    },
+    {
+      "check": "Test partition matches the split locked before tuning",
+      "passed": true,
+      "detail": "sha256 690c3f3a60f1..."
+    },
+    {
+      "check": "Model chosen from training-set CV only (test unused)",
+      "passed": true,
+      "detail": "selection recorded at 2026-10-13T18:53:18+00:00"
+    },
+    {
+      "check": "Imputation medians equal training-only medians",
+      "passed": true,
+      "detail": "6 of 11 medians differ from all-data medians"
+    },
+    {
+      "check": "Scaling statistics equal training-only statistics",
+      "passed": true,
+      "detail": "StandardScaler.mean_ compared with imputed training means"
+    },
+    {
+      "check": "Predictors exclude ID and target",
+      "passed": true,
+      "detail": "24 input columns"
+    },
+    {
+      "check": "Resampling is not applied at prediction time",
+      "passed": true,
+      "detail": "80 predictions for 80 test records"
+    },
+    {
+      "check": "Resampler sits inside the fitted pipeline (fit on training folds only)",
+      "passed": true,
+      "detail": "resample step = SMOTENC"
+    },
+    {
+      "check": "Shuffled-label training falls to chance level",
+      "passed": true,
+      "detail": "mean CV ROC-AUC with permuted labels = 0.505"
+    },
+    {
+      "check": "Reloaded pipeline reproduces predictions",
+      "passed": true,
+      "detail": "reload took 0.05s"
+    }
+  ]
+}

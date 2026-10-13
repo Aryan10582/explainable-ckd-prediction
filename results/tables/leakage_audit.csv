@@ -1,0 +1,12 @@
+check,passed,detail
+Train and test record IDs are disjoint,True,0 shared IDs
+No identical feature vector appears in both partitions,True,0 test records
+Test partition matches the split locked before tuning,True,sha256 690c3f3a60f1...
+Model chosen from training-set CV only (test unused),True,selection recorded at 2026-10-13T18:53:18+00:00
+Imputation medians equal training-only medians,True,6 of 11 medians differ from all-data medians
+Scaling statistics equal training-only statistics,True,StandardScaler.mean_ compared with imputed training means
+Predictors exclude ID and target,True,24 input columns
+Resampling is not applied at prediction time,True,80 predictions for 80 test records
+Resampler sits inside the fitted pipeline (fit on training folds only),True,resample step = SMOTENC
+Shuffled-label training falls to chance level,True,mean CV ROC-AUC with permuted labels = 0.505
+Reloaded pipeline reproduces predictions,True,reload took 0.05s

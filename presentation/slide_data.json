@@ -1,0 +1,236 @@
+{
+  "student": {
+    "name": "Vedank Singh",
+    "reg": "240962043",
+    "program": "B.Tech. CSE (AI & ML), V Semester, Section B",
+    "guides": "Dr. Narendra V G (Professor) and Ms Vibha (Assistant Professor - Senior Scale)",
+    "school": "School of Computer Engineering, Manipal Institute of Technology",
+    "year": "Academic Year 2026\u201327"
+  },
+  "gbd": {
+    "adults_millions": 788,
+    "prevalence_pct": 14.2
+  },
+  "data": {
+    "records": 400,
+    "ckd": 250,
+    "nonckd": 150,
+    "missing_pct": 10.6,
+    "records_missing": 243,
+    "line_repairs": 3,
+    "whitespace": 16,
+    "implausible": 3,
+    "train": 320,
+    "test": 80,
+    "test_ckd": 50,
+    "test_non": 30,
+    "sc_ckd": "2.3",
+    "sc_non": "0.9",
+    "hb_ckd": "10.9",
+    "hb_non": "15.2"
+  },
+  "models": [
+    {
+      "key": "logistic_regression",
+      "name": "Logistic Regression",
+      "selected": false,
+      "params": "L2 penalty, C = 0.1",
+      "cv_auc": 0.999375,
+      "cv_auc_sd": 0.00125,
+      "cv_recall": 0.9600000000000002,
+      "cv_recall_sd": 0.0406201920231797,
+      "cv_f1": 0.9791498308486982,
+      "cv_f1_sd": 0.0213289878966708,
+      "test_acc": 0.975,
+      "test_recall": 0.96,
+      "test_spec": 1.0,
+      "test_auc": 1.0,
+      "fp": 0,
+      "fn": 2,
+      "abl_recall": -0.004999999999999782,
+      "abl_f1": -0.002664002664002796,
+      "abl_auc": 0.0
+    },
+    {
+      "key": "svm",
+      "name": "SVM",
+      "selected": false,
+      "params": "RBF kernel, C = 1, gamma = scale",
+      "cv_auc": 1.0,
+      "cv_auc_sd": 0.0,
+      "cv_recall": 0.985,
+      "cv_recall_sd": 0.0299999999999999,
+      "cv_f1": 0.992207792207792,
+      "cv_f1_sd": 0.0155844155844155,
+      "test_acc": 1.0,
+      "test_recall": 1.0,
+      "test_spec": 1.0,
+      "test_auc": 1.0,
+      "fp": 0,
+      "fn": 0,
+      "abl_recall": -0.010000000000000009,
+      "abl_f1": -0.005260562222587639,
+      "abl_auc": 0.0
+    },
+    {
+      "key": "random_forest",
+      "name": "Random Forest",
+      "selected": true,
+      "params": "300 trees, full depth, sqrt features/split",
+      "cv_auc": 0.999375,
+      "cv_auc_sd": 0.0008333333333333,
+      "cv_recall": 1.0,
+      "cv_recall_sd": 0.0,
+      "cv_f1": 0.9950617283950616,
+      "cv_f1_sd": 0.0060481228216868,
+      "test_acc": 1.0,
+      "test_recall": 1.0,
+      "test_spec": 1.0,
+      "test_auc": 1.0,
+      "fp": 0,
+      "fn": 0,
+      "abl_recall": 0.0,
+      "abl_f1": 0.002408912978018374,
+      "abl_auc": 0.0006249999999999867
+    },
+    {
+      "key": "xgboost",
+      "name": "XGBoost",
+      "selected": false,
+      "params": "100 trees, depth 2, learning rate 0.05",
+      "cv_auc": 0.99875,
+      "cv_auc_sd": 0.0016666666666666,
+      "cv_recall": 0.985,
+      "cv_recall_sd": 0.0122474487139159,
+      "cv_f1": 0.9850601656508828,
+      "cv_f1_sd": 0.0120716702686275,
+      "test_acc": 1.0,
+      "test_recall": 1.0,
+      "test_spec": 1.0,
+      "test_auc": 1.0,
+      "fp": 0,
+      "fn": 0,
+      "abl_recall": -0.0050000000000000044,
+      "abl_f1": -0.0025316455696203777,
+      "abl_auc": -0.0002083333333333659
+    }
+  ],
+  "winner": "Random Forest",
+  "selection_reason": "Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).",
+  "rf_test": {
+    "acc_lo": 0.9549359649323076,
+    "acc_hi": 1.0,
+    "rec_lo": 0.9288782635358024,
+    "spec_lo": 0.8842966917779722
+  },
+  "near_miss": {
+    "id": 324,
+    "rf": 0.396667,
+    "xgb": 0.496757
+  },
+  "checks": {
+    "probe_auc": 0.8644791666666667,
+    "perm_auc": 0.5047708333333333,
+    "audit_passed": 11,
+    "audit_total": 11
+  },
+  "shap": {
+    "top": [
+      {
+        "label": "Serum creatinine",
+        "mean_abs": 0.0790657729064728,
+        "share": 16.377094281911464
+      },
+      {
+        "label": "Specific gravity",
+        "mean_abs": 0.0745113320404219,
+        "share": 15.433721382073548
+      },
+      {
+        "label": "Haemoglobin",
+        "mean_abs": 0.0666561915254903,
+        "share": 13.806666183829032
+      },
+      {
+        "label": "Albumin grade",
+        "mean_abs": 0.0447256686208293,
+        "share": 9.264141295264386
+      },
+      {
+        "label": "Packed cell volume",
+        "mean_abs": 0.0427080246669423,
+        "share": 8.84622158050713
+      },
+      {
+        "label": "Hypertension",
+        "mean_abs": 0.0331003794586387,
+        "share": 6.856165635696874
+      }
+    ],
+    "top5_share": 63.72784472358556,
+    "base": 0.6673333333333303,
+    "additivity": 1.815840659042875e-08,
+    "spearman": 0.9947826086956522,
+    "local_ckd": {
+      "id": 26,
+      "p": 0.9933333333333332,
+      "top": [
+        {
+          "label": "Serum creatinine = 2.4 mg/dL",
+          "shap": 0.067
+        },
+        {
+          "label": "Specific gravity = 1.015",
+          "shap": 0.058
+        },
+        {
+          "label": "Haemoglobin = 11.6 g/dL",
+          "shap": 0.049
+        },
+        {
+          "label": "Hypertension = yes",
+          "shap": 0.039
+        }
+      ]
+    },
+    "local_border": {
+      "id": 324,
+      "p": 0.3966666666666666,
+      "top": [
+        {
+          "label": "Serum creatinine = 0.7 mg/dL",
+          "shap": -0.089
+        },
+        {
+          "label": "Specific gravity = 1.02",
+          "shap": -0.066
+        },
+        {
+          "label": "Sodium = 150 mEq/L",
+          "shap": -0.063
+        },
+        {
+          "label": "Haemoglobin = 12.6 g/dL (imputed)",
+          "shap": 0.045
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "pipeline_s": 33,
+    "predict_ms": 46,
+    "explain_ms": 82
+  },
+  "fig": {
+    "workflow": "D:\\3rd year\\Vedank ML\\results\\figures\\workflow_diagram.png",
+    "missing": "D:\\3rd year\\Vedank ML\\results\\figures\\eda_missing_per_record_train.png",
+    "scores": "D:\\3rd year\\Vedank ML\\results\\figures\\test_score_distributions.png",
+    "beeswarm": "D:\\3rd year\\Vedank ML\\results\\figures\\shap_beeswarm.png",
+    "wf_ckd": "D:\\3rd year\\Vedank ML\\results\\figures\\shap_waterfall_typical_ckd_26.png",
+    "wf_border": "D:\\3rd year\\Vedank ML\\results\\figures\\shap_waterfall_borderline_324.png",
+    "app_overview": "D:\\3rd year\\Vedank ML\\presentation\\assets\\app_overview.jpg",
+    "app_prediction": "D:\\3rd year\\Vedank ML\\presentation\\assets\\app_prediction.jpg",
+    "app_prediction_top": "D:\\3rd year\\Vedank ML\\presentation\\assets\\app_prediction_top.jpg",
+    "app_explanation": "D:\\3rd year\\Vedank ML\\presentation\\assets\\app_explanation.jpg"
+  }
+}

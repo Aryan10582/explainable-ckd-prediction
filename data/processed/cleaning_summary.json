@@ -1,0 +1,118 @@
+{
+  "n_records_raw": 400,
+  "whitespace_fixed_cells": {
+    "pcv": 2,
+    "wbcc": 3,
+    "rbcc": 1,
+    "dm": 6,
+    "cad": 2,
+    "class": 2
+  },
+  "missing_tokens_converted": {
+    "age": 9,
+    "bp": 12,
+    "sg": 47,
+    "al": 46,
+    "su": 49,
+    "rbc": 152,
+    "pc": 65,
+    "pcc": 4,
+    "ba": 4,
+    "bgr": 44,
+    "bu": 19,
+    "sc": 17,
+    "sod": 87,
+    "pot": 88,
+    "hemo": 52,
+    "pcv": 71,
+    "wbcc": 106,
+    "rbcc": 131,
+    "htn": 2,
+    "dm": 2,
+    "cad": 2,
+    "appet": 1,
+    "pe": 1,
+    "ane": 1
+  },
+  "implausible_values_set_missing": [
+    {
+      "record_id": 21,
+      "feature": "sod",
+      "value": 4.5,
+      "plausible_range": [
+        90,
+        200
+      ],
+      "class": "ckd",
+      "action": "set to missing (record kept)"
+    },
+    {
+      "record_id": 61,
+      "feature": "pot",
+      "value": 39.0,
+      "plausible_range": [
+        1.0,
+        15.0
+      ],
+      "class": "ckd",
+      "action": "set to missing (record kept)"
+    },
+    {
+      "record_id": 128,
+      "feature": "pot",
+      "value": 47.0,
+      "plausible_range": [
+        1.0,
+        15.0
+      ],
+      "class": "ckd",
+      "action": "set to missing (record kept)"
+    }
+  ],
+  "invalid_categories_set_missing": [],
+  "n_records_clean": 400,
+  "class_counts": {
+    "ckd": 250,
+    "notckd": 150
+  },
+  "target_mapping": {
+    "ckd": 1,
+    "notckd": 0
+  },
+  "duplicates": {
+    "n_records_in_duplicate_groups": 0,
+    "n_groups": 0,
+    "n_conflicting_groups": 0,
+    "groups": []
+  },
+  "source_file": "chronic_kidney_disease_full.arff",
+  "line_repairs": [
+    {
+      "record_id": 69,
+      "issue": "trailing comma",
+      "action": "dropped empty last field"
+    },
+    {
+      "record_id": 72,
+      "issue": "trailing comma",
+      "action": "dropped empty last field"
+    },
+    {
+      "record_id": 369,
+      "issue": "doubled comma after field 19",
+      "action": "dropped the empty field"
+    }
+  ],
+  "cross_check": {
+    "compared_with": "uci_data.csv",
+    "n_cells_different": 0,
+    "by_column": {}
+  },
+  "validation_problems": [],
+  "missing_cells_total": 1015,
+  "records_with_any_missing": 243,
+  "complete_records_by_class": {
+    "notckd": 115,
+    "ckd": 42
+  }
+}

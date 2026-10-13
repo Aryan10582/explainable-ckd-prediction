@@ -1,0 +1,25 @@
+code,name,type,unit,values / limits,description,unit note
+age,Age,continuous,years,plausibility limits 0-120,Age of the patient,
+bp,Blood pressure,continuous,mm Hg,plausibility limits 30-250,Blood pressure,Documented as 'mm/Hg'; the source does not state systolic or diastolic.
+sg,Specific gravity,ordinal,-,"1.005, 1.01, 1.015, 1.02, 1.025","Specific gravity (urine, by clinical convention; the source says only 'specific gravity')",Dimensionless; recorded at five discrete levels.
+al,Albumin grade,ordinal,-,"0, 1, 2, 3, 4, 5","Albumin level, recorded as a grade from 0 to 5",Ordinal grade 0-5; no unit documented.
+su,Sugar grade,ordinal,-,"0, 1, 2, 3, 4, 5","Sugar level, recorded as a grade from 0 to 5",Ordinal grade 0-5; no unit documented.
+rbc,Red blood cells,binary,-,normal (0) / abnormal (1),Red blood cells (normal / abnormal),
+pc,Pus cells,binary,-,normal (0) / abnormal (1),Pus cells (normal / abnormal),
+pcc,Pus cell clumps,binary,-,notpresent (0) / present (1),Pus cell clumps (present / not present),
+ba,Bacteria,binary,-,notpresent (0) / present (1),Bacteria (present / not present),
+bgr,Blood glucose (random),continuous,mg/dL,plausibility limits 10-1500,Random blood glucose,Documented as 'mgs/dl'.
+bu,Blood urea,continuous,mg/dL,plausibility limits 1-500,Blood urea,Documented as 'mgs/dl'.
+sc,Serum creatinine,continuous,mg/dL,plausibility limits 0.1-100,Serum creatinine,Documented as 'mgs/dl'.
+sod,Sodium,continuous,mEq/L,plausibility limits 90-200,Serum sodium,
+pot,Potassium,continuous,mEq/L,plausibility limits 1-15,Serum potassium,
+hemo,Haemoglobin,continuous,g/dL,plausibility limits 1-25,Haemoglobin,Documented only as 'gms'; g/dL is the conventional unit and matches the value range.
+pcv,Packed cell volume,continuous,-,plausibility limits 5-80,Packed cell volume (haematocrit),No unit documented by the source (conventionally %).
+wbcc,White blood cell count,continuous,cells/cumm,plausibility limits 500-100000,White blood cell count,Named 'wc' in the info file; 'wbcc' in the data file.
+rbcc,Red blood cell count,continuous,millions/cmm,plausibility limits 0.5-10,Red blood cell count,Named 'rc' in the info file; 'rbcc' in the data file.
+htn,Hypertension,binary,-,no (0) / yes (1),Hypertension (yes / no),
+dm,Diabetes mellitus,binary,-,no (0) / yes (1),Diabetes mellitus (yes / no),
+cad,Coronary artery disease,binary,-,no (0) / yes (1),Coronary artery disease (yes / no),
+appet,Appetite,binary,-,good (0) / poor (1),Appetite (good / poor),
+pe,Pedal oedema,binary,-,no (0) / yes (1),Pedal oedema (yes / no),
+ane,Anaemia,binary,-,no (0) / yes (1),Anaemia (yes / no),

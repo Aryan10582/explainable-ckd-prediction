@@ -1,0 +1,8 @@
+{
+  "name": "ckd-xai-slides",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Builds the project presentation (PPTX) from saved experiment results",
+  "scripts": { "build": "node build_slides.js" },
+  "dependencies": { "pptxgenjs": "3.12.0" }
+}

@@ -1,0 +1,128 @@
+{
+  "model": "random_forest",
+  "display_name": "Random Forest",
+  "hyperparameters": {
+    "max_depth": null,
+    "max_features": "sqrt",
+    "min_samples_leaf": 1,
+    "n_estimators": 300
+  },
+  "pipeline_steps": [
+    "prep",
+    "resample",
+    "clf"
+  ],
+  "classifier_class": "RandomForestClassifier",
+  "threshold": 0.5,
+  "positive_class": {
+    "label": 1,
+    "name": "ckd"
+  },
+  "target_mapping": {
+    "ckd": 1,
+    "notckd": 0
+  },
+  "raw_feature_order": [
+    "age",
+    "bp",
+    "sg",
+    "al",
+    "su",
+    "rbc",
+    "pc",
+    "pcc",
+    "ba",
+    "bgr",
+    "bu",
+    "sc",
+    "sod",
+    "pot",
+    "hemo",
+    "pcv",
+    "wbcc",
+    "rbcc",
+    "htn",
+    "dm",
+    "cad",
+    "appet",
+    "pe",
+    "ane"
+  ],
+  "model_feature_order": [
+    "age",
+    "bp",
+    "bgr",
+    "bu",
+    "sc",
+    "sod",
+    "pot",
+    "hemo",
+    "pcv",
+    "wbcc",
+    "rbcc",
+    "sg",
+    "al",
+    "su",
+    "rbc",
+    "pc",
+    "pcc",
+    "ba",
+    "htn",
+    "dm",
+    "cad",
+    "appet",
+    "pe",
+    "ane"
+  ],
+  "smotenc_categorical_columns": [
+    "sg",
+    "al",
+    "su",
+    "rbc",
+    "pc",
+    "pcc",
+    "ba",
+    "htn",
+    "dm",
+    "cad",
+    "appet",
+    "pe",
+    "ane"
+  ],
+  "shap_output": "probability of CKD",
+  "cv_summary": {
+    "roc_auc": 0.999375,
+    "accuracy": 0.99375,
+    "precision": 0.9902439024390244,
+    "recall": 1.0,
+    "f1": 0.9950617283950617,
+    "specificity": 0.9833333333333334
+  },
+  "n_training_records": 320,
+  "training_class_counts": {
+    "1": 200,
+    "0": 120
+  },
+  "train_ids_sha256": "690c3f3a60f1b54274989782ed8a0dd462cf2ce7698d347dbe15b1ff6a4f0db7",
+  "random_seed": 42,
+  "trained_at_utc": "2026-10-13T18:53:22+00:00",
+  "model_file_sha256": "4a24eb45833ccd2c74729f49be1f23d61096085202041519fa7c9aae4b0e0463",
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "imbalanced-learn": "0.14.2",
+      "xgboost": "3.4.1",
+      "shap": "0.53.0",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.65.0",
+      "joblib": "1.6.0",
+      "pyyaml": "6.0.3"
+    }
+  }
+}

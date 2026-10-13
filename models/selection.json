@@ -1,0 +1,56 @@
+{
+  "selected_model": "random_forest",
+  "display_name": "Random Forest",
+  "reason": "Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).",
+  "rule": {
+    "primary_metric": "roc_auc",
+    "auc_tie_tolerance": 0.005,
+    "tie_breakers": [
+      "recall",
+      "f1"
+    ],
+    "simplicity_order": [
+      "logistic_regression",
+      "svm",
+      "random_forest",
+      "xgboost"
+    ],
+    "threshold": 0.5
+  },
+  "ranking": [
+    {
+      "model": "random_forest",
+      "selection_rank": 1,
+      "mean_roc_auc": 0.999375,
+      "mean_recall": 1.0,
+      "mean_f1": 0.9950617283950617,
+      "within_auc_tolerance": true
+    },
+    {
+      "model": "svm",
+      "selection_rank": 2,
+      "mean_roc_auc": 1.0,
+      "mean_recall": 0.985,
+      "mean_f1": 0.9922077922077921,
+      "within_auc_tolerance": true
+    },
+    {
+      "model": "xgboost",
+      "selection_rank": 3,
+      "mean_roc_auc": 0.99875,
+      "mean_recall": 0.985,
+      "mean_f1": 0.9850601656508828,
+      "within_auc_tolerance": true
+    },
+    {
+      "model": "logistic_regression",
+      "selection_rank": 4,
+      "mean_roc_auc": 0.999375,
+      "mean_recall": 0.9600000000000002,
+      "mean_f1": 0.9791498308486982,
+      "within_auc_tolerance": true
+    }
+  ],
+  "test_set_used": false,
+  "decided_at_utc": "2026-10-13T18:53:18+00:00"
+}

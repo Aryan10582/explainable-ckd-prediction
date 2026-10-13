@@ -1,0 +1,315 @@
+
+=== run started 2026-10-13T17:29:01+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.13 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 3.42 s
+[train]
+  tuning Logistic Regression ...
+    best CV ROC-AUC 0.9994 +/- 0.0013 (4.9s, 50 fits)
+  tuning SVM ...
+    best CV ROC-AUC 1.0000 +/- 0.0000 (0.9s, 80 fits)
+  tuning Random Forest ...
+    best CV ROC-AUC 0.9994 +/- 0.0008 (4.1s, 90 fits)
+  tuning XGBoost ...
+    best CV ROC-AUC 0.9988 +/- 0.0017 (3.4s, 60 fits)
+  selected: Random Forest -- Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).
+  resampling ablation (SMOTENC vs none, same folds and hyper-parameters) ...
+  missingness-only probe ...
+  label-permutation sanity check ...
+  done in 17.98 s
+[evaluate]
+
+=== run started 2026-10-13T17:30:56+00:00 | stages: evaluate explain latency ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 76.97 s
+  leakage audit: 11/11 checks passed
+[explain]
+
+=== run started 2026-10-13T17:37:52+00:00 | stages: evaluate explain latency ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 6.07 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 8.26 s
+[latency]
+  predict 91.76 ms, explain 149.73 ms (median)
+  done in 7.61 s
+=== run finished 2026-10-13T17:38:16+00:00 ===
+
+=== run started 2026-10-13T17:39:51+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.17 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 4.65 s
+
+=== run started 2026-10-13T17:40:17+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.16 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 4.03 s
+[train]
+  tuning Logistic Regression ...
+    best CV ROC-AUC 0.9994 +/- 0.0013 (5.2s, 50 fits)
+  tuning SVM ...
+    best CV ROC-AUC 1.0000 +/- 0.0000 (0.9s, 80 fits)
+  tuning Random Forest ...
+    best CV ROC-AUC 0.9994 +/- 0.0008 (4.5s, 90 fits)
+  tuning XGBoost ...
+    best CV ROC-AUC 0.9988 +/- 0.0017 (3.6s, 60 fits)
+  selected: Random Forest -- Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).
+  resampling ablation (SMOTENC vs none, same folds and hyper-parameters) ...
+  missingness-only probe ...
+  out-of-fold CV predictions (for training-set ROC curves) ...
+  label-permutation sanity check ...
+  done in 20.22 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 3.34 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 7.25 s
+[latency]
+  predict 71.08 ms, explain 123.62 ms (median)
+  done in 5.97 s
+=== run finished 2026-10-13T17:41:00+00:00 ===
+
+=== run started 2026-10-13T17:48:45+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.18 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 4.72 s
+[train]
+  tuning Logistic Regression ...
+    best CV ROC-AUC 0.9994 +/- 0.0013 (5.7s, 50 fits)
+  tuning SVM ...
+    best CV ROC-AUC 1.0000 +/- 0.0000 (1.1s, 80 fits)
+  tuning Random Forest ...
+    best CV ROC-AUC 0.9994 +/- 0.0008 (4.6s, 90 fits)
+  tuning XGBoost ...
+    best CV ROC-AUC 0.9988 +/- 0.0017 (3.0s, 60 fits)
+  selected: Random Forest -- Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).
+  resampling ablation (SMOTENC vs none, same folds and hyper-parameters) ...
+  missingness-only probe ...
+  out-of-fold CV predictions (for training-set ROC curves) ...
+  label-permutation sanity check ...
+  done in 21.36 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 3.71 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 7.76 s
+[latency]
+  predict 90.61 ms, explain 144.72 ms (median)
+  done in 7.19 s
+=== run finished 2026-10-13T17:49:32+00:00 ===
+
+=== run started 2026-10-13T18:08:35+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 8.4 s
+=== run finished 2026-10-13T18:08:46+00:00 ===
+
+=== run started 2026-10-13T18:18:48+00:00 | stages: eda evaluate explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 3.57 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 5.1 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 7.83 s
+=== run finished 2026-10-13T18:19:07+00:00 ===
+
+=== run started 2026-10-13T18:22:04+00:00 | stages: eda evaluate explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 3.28 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 5.08 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 8.08 s
+=== run finished 2026-10-13T18:22:22+00:00 ===
+
+=== run started 2026-10-13T18:23:39+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 11.24 s
+=== run finished 2026-10-13T18:23:52+00:00 ===
+
+=== run started 2026-10-13T18:24:05+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 11.84 s
+=== run finished 2026-10-13T18:24:18+00:00 ===
+
+=== run started 2026-10-13T18:24:53+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 9.21 s
+=== run finished 2026-10-13T18:25:04+00:00 ===
+
+=== run started 2026-10-13T18:25:57+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 5.42 s
+=== run finished 2026-10-13T18:26:04+00:00 ===
+
+=== run started 2026-10-13T18:26:46+00:00 | stages: explain ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 5.25 s
+=== run finished 2026-10-13T18:26:52+00:00 ===
+
+=== run started 2026-10-13T18:28:15+00:00 | stages: eda evaluate ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 2.25 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 3.54 s
+  leakage audit: 11/11 checks passed
+=== run finished 2026-10-13T18:28:22+00:00 ===
+
+=== run started 2026-10-13T18:29:59+00:00 | stages: evaluate ===
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 3.68 s
+  leakage audit: 11/11 checks passed
+=== run finished 2026-10-13T18:30:03+00:00 ===
+
+=== run started 2026-10-13T18:46:35+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.14 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 3.62 s
+[train]
+  tuning Logistic Regression ...
+    best CV ROC-AUC 0.9994 +/- 0.0013 (5.5s, 50 fits)
+  tuning SVM ...
+    best CV ROC-AUC 1.0000 +/- 0.0000 (1.0s, 80 fits)
+  tuning Random Forest ...
+    best CV ROC-AUC 0.9994 +/- 0.0008 (4.7s, 90 fits)
+  tuning XGBoost ...
+    best CV ROC-AUC 0.9988 +/- 0.0017 (3.8s, 60 fits)
+  selected: Random Forest -- Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).
+  resampling ablation (SMOTENC vs none, same folds and hyper-parameters) ...
+  missingness-only probe ...
+  out-of-fold CV predictions (for training-set ROC curves) ...
+  label-permutation sanity check ...
+  done in 20.77 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 3.14 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 8.72 s
+[latency]
+  predict 72.3 ms, explain 125.92 ms (median)
+  done in 6.26 s
+=== run finished 2026-10-13T18:47:20+00:00 ===
+
+=== run started 2026-10-13T18:53:00+00:00 | stages: data eda train evaluate explain latency ===
+[data]
+  source: cached copy in data/raw; 400 records; classes {'ckd': 250, 'notckd': 150}; 3 line repairs; 3 implausible values set missing
+  done in 0.14 s
+  split locked: train 320 / test 80 (test ids sha256 690c3f3a60f1...)
+[eda]
+  done in 3.88 s
+[train]
+  tuning Logistic Regression ...
+    best CV ROC-AUC 0.9994 +/- 0.0013 (5.7s, 50 fits)
+  tuning SVM ...
+    best CV ROC-AUC 1.0000 +/- 0.0000 (0.8s, 80 fits)
+  tuning Random Forest ...
+    best CV ROC-AUC 0.9994 +/- 0.0008 (3.7s, 90 fits)
+  tuning XGBoost ...
+    best CV ROC-AUC 0.9988 +/- 0.0017 (2.3s, 60 fits)
+  selected: Random Forest -- Models within 0.005 of the best mean CV ROC-AUC (1.0000) were treated as tied: Random Forest, SVM, XGBoost, Logistic Regression. Among them, Random Forest ranks first on the predeclared tie-breakers (mean CV recall, then f1, then simplicity).
+  resampling ablation (SMOTENC vs none, same folds and hyper-parameters) ...
+  missingness-only probe ...
+  out-of-fold CV predictions (for training-set ROC curves) ...
+  label-permutation sanity check ...
+  done in 16.86 s
+[evaluate]
+       display_name  roc_auc  accuracy  precision  recall     f1  fp  fn
+Logistic Regression      1.0     0.975        1.0    0.96 0.9796   0   2
+                SVM      1.0     1.000        1.0    1.00 1.0000   0   0
+      Random Forest      1.0     1.000        1.0    1.00 1.0000   0   0
+            XGBoost      1.0     1.000        1.0    1.00 1.0000   0   0
+  done in 1.99 s
+  leakage audit: 11/11 checks passed
+[explain]
+  SHAP (TreeExplainer, probability of CKD): additivity error 1.82e-08; top features: Serum creatinine, Specific gravity, Haemoglobin, Albumin grade, Packed cell volume
+  done in 5.72 s
+[latency]
+  predict 46.49 ms, explain 81.86 ms (median)
+  done in 4.19 s
+=== run finished 2026-10-13T18:53:35+00:00 ===

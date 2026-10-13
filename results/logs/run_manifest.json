@@ -1,0 +1,206 @@
+{
+  "last_run_utc": "2026-10-13T18:53:35+00:00",
+  "stages_run": [
+    "data",
+    "eda",
+    "train",
+    "evaluate",
+    "explain",
+    "latency"
+  ],
+  "stage_seconds": {
+    "data": 0.14,
+    "eda": 3.88,
+    "train": 16.86,
+    "evaluate": 1.99,
+    "explain": 5.72,
+    "latency": 4.19
+  },
+  "random_seed": 42,
+  "config": {
+    "project": {
+      "title": "Explainable Machine Learning for Chronic Kidney Disease Prediction Using SHAP-Based Feature Attribution",
+      "random_seed": 42
+    },
+    "data": {
+      "uci_id": 336,
+      "repository_url": "https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease",
+      "zip_url": "https://archive.ics.uci.edu/static/public/336/chronic+kidney+disease.zip",
+      "csv_url": "https://archive.ics.uci.edu/static/public/336/data.csv",
+      "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=336",
+      "dataset_doi": "10.24432/C5G020",
+      "expected_sha256": {
+        "chronic_kidney_disease_full.arff": "a5ea96369b8516d725e4f353ad9c6e7e25a1a7db227bc761f59d8e0dfab15797",
+        "uci_data.csv": "0eeea8d17f5ad8792d854999d6ddf1602ec4e116616f6ccdfdaef0ba8109e694"
+      },
+      "expected_records": 400,
+      "expected_features": 24,
+      "expected_class_counts": {
+        "ckd": 250,
+        "notckd": 150
+      }
+    },
+    "split": {
+      "test_size": 0.2,
+      "stratify": true
+    },
+    "cv": {
+      "n_splits": 5,
+      "n_jobs": -1
+    },
+    "resampling": {
+      "method": "smotenc",
+      "k_neighbors": 5
+    },
+    "selection": {
+      "primary_metric": "roc_auc",
+      "auc_tie_tolerance": 0.005,
+      "tie_breakers": [
+        "recall",
+        "f1"
+      ],
+      "simplicity_order": [
+        "logistic_regression",
+        "svm",
+        "random_forest",
+        "xgboost"
+      ],
+      "threshold": 0.5
+    },
+    "evaluation": {
+      "bootstrap_resamples": 2000,
+      "ci_level": 0.95
+    },
+    "shap": {
+      "background_size": 100,
+      "kernel_background_size": 50,
+      "kernel_nsamples": 1000,
+      "max_display": 12
+    },
+    "latency": {
+      "repeats": 30
+    },
+    "grids": {
+      "logistic_regression": {
+        "clf__C": [
+          0.01,
+          0.1,
+          1.0,
+          10.0,
+          100.0
+        ],
+        "clf__l1_ratio": [
+          0.0,
+          1.0
+        ]
+      },
+      "svm": [
+        {
+          "clf__estimator__kernel": [
+            "rbf"
+          ],
+          "clf__estimator__C": [
+            0.1,
+            1.0,
+            10.0,
+            100.0
+          ],
+          "clf__estimator__gamma": [
+            "scale",
+            0.01,
+            0.1
+          ]
+        },
+        {
+          "clf__estimator__kernel": [
+            "linear"
+          ],
+          "clf__estimator__C": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ]
+        }
+      ],
+      "random_forest": {
+        "clf__n_estimators": [
+          300
+        ],
+        "clf__max_depth": [
+          null,
+          4,
+          8
+        ],
+        "clf__min_samples_leaf": [
+          1,
+          3,
+          5
+        ],
+        "clf__max_features": [
+          "sqrt",
+          0.5
+        ]
+      },
+      "xgboost": {
+        "clf__n_estimators": [
+          100,
+          300
+        ],
+        "clf__max_depth": [
+          2,
+          3,
+          4
+        ],
+        "clf__learning_rate": [
+          0.05,
+          0.1
+        ],
+        "clf__subsample": [
+          0.8
+        ],
+        "clf__colsample_bytree": [
+          0.8
+        ]
+      }
+    }
+  },
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "imbalanced-learn": "0.14.2",
+      "xgboost": "3.4.1",
+      "shap": "0.53.0",
+      "matplotlib": "3.11.2",
+      "streamlit": "1.65.0",
+      "joblib": "1.6.0",
+      "pyyaml": "6.0.3"
+    }
+  },
+  "split": {
+    "random_seed": 42,
+    "test_size": 0.2,
+    "stratified": true,
+    "n_train": 320,
+    "n_test": 80,
+    "class_counts": {
+      "train": {
+        "ckd": 200,
+        "notckd": 120
+      },
+      "test": {
+        "ckd": 50,
+        "notckd": 30
+      }
+    },
+    "test_ids_sha256": "690c3f3a60f1b54274989782ed8a0dd462cf2ce7698d347dbe15b1ff6a4f0db7",
+    "locked_at_utc": "2026-10-13T17:21:31+00:00",
+    "note": "Test partition locked before any tuning; it is used only for final evaluation."
+  }
+}

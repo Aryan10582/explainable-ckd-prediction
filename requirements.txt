@@ -1,0 +1,25 @@
+# Tested together on Python 3.13 (Windows 11). Exact versions used for the reported results;
+# requirements-lock.txt pins every transitive dependency as well.
+
+# core experiment
+numpy==2.5.4
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.9.1
+imbalanced-learn==0.14.2
+xgboost==3.4.1
+shap==0.53.0
+matplotlib==3.11.2
+pyyaml==6.0.3
+joblib==1.6.0
+requests==2.34.2
+
+# demo app
+streamlit==1.65.0
+altair==6.3.0
+
+# tests and notebook
+pytest==9.1.1
+nbformat==5.11.1
+nbconvert==7.17.2
+ipykernel==7.4.0

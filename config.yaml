@@ -1,0 +1,84 @@
+# Run configuration for the CKD explainable-ML project.
+# Every modelling decision that could affect results is fixed here BEFORE the
+# experiment is run. The selection rule in particular was written before any
+# cross-validation or test score was seen.
+
+project:
+  title: "Explainable Machine Learning for Chronic Kidney Disease Prediction Using SHAP-Based Feature Attribution"
+  random_seed: 42
+
+data:
+  uci_id: 336
+  repository_url: "https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease"
+  zip_url: "https://archive.ics.uci.edu/static/public/336/chronic+kidney+disease.zip"
+  csv_url: "https://archive.ics.uci.edu/static/public/336/data.csv"
+  metadata_url: "https://archive.ics.uci.edu/api/dataset?id=336"
+  dataset_doi: "10.24432/C5G020"
+  # SHA-256 of the files as retrieved on 2026-10-13. A mismatch triggers a
+  # warning (the upstream file may have been re-issued), not a silent change.
+  expected_sha256:
+    chronic_kidney_disease_full.arff: "a5ea96369b8516d725e4f353ad9c6e7e25a1a7db227bc761f59d8e0dfab15797"
+    uci_data.csv: "0eeea8d17f5ad8792d854999d6ddf1602ec4e116616f6ccdfdaef0ba8109e694"
+  expected_records: 400
+  expected_features: 24
+  expected_class_counts: {ckd: 250, notckd: 150}
+
+split:
+  test_size: 0.20          # stratified hold-out, locked before any tuning
+  stratify: true
+
+cv:
+  n_splits: 5              # stratified, shuffled with project.random_seed
+  n_jobs: -1               # parallel CV fits; set to 1 on a slow laptop
+
+resampling:
+  method: smotenc          # SMOTE-NC: SMOTE variant for mixed numeric + categorical data
+  k_neighbors: 5
+
+selection:
+  # Predeclared rule (fixed before running the experiment):
+  # 1. highest mean 5-fold CV ROC-AUC on the training set;
+  # 2. models within `auc_tie_tolerance` of the best are treated as tied and
+  #    ranked by mean CV recall (CKD = positive class), then mean CV F1;
+  # 3. any remaining exact tie goes to the simpler model in `simplicity_order`.
+  primary_metric: roc_auc
+  auc_tie_tolerance: 0.005
+  tie_breakers: [recall, f1]
+  simplicity_order: [logistic_regression, svm, random_forest, xgboost]
+  threshold: 0.5           # default threshold; NOT tuned
+
+evaluation:
+  bootstrap_resamples: 2000
+  ci_level: 0.95
+
+shap:
+  background_size: 100     # training records only
+  kernel_background_size: 50
+  kernel_nsamples: 1000
+  max_display: 12
+
+latency:
+  repeats: 30
+
+# Modest, reproducible hyper-parameter grids (exhaustive GridSearchCV).
+grids:
+  logistic_regression:
+    clf__C: [0.01, 0.1, 1.0, 10.0, 100.0]
+    clf__l1_ratio: [0.0, 1.0]          # 0 = L2 penalty, 1 = L1 penalty
+  svm:
+    - clf__estimator__kernel: [rbf]
+      clf__estimator__C: [0.1, 1.0, 10.0, 100.0]
+      clf__estimator__gamma: [scale, 0.01, 0.1]
+    - clf__estimator__kernel: [linear]
+      clf__estimator__C: [0.01, 0.1, 1.0, 10.0]
+  random_forest:
+    clf__n_estimators: [300]
+    clf__max_depth: [null, 4, 8]
+    clf__min_samples_leaf: [1, 3, 5]
+    clf__max_features: [sqrt, 0.5]
+  xgboost:
+    clf__n_estimators: [100, 300]
+    clf__max_depth: [2, 3, 4]
+    clf__learning_rate: [0.05, 0.1]
+    clf__subsample: [0.8]
+    clf__colsample_bytree: [0.8]

@@ -1,0 +1,25 @@
+feature,name,missing_n,missing_pct
+rbc,Red blood cells,152,38.0
+rbcc,Red blood cell count,131,32.8
+wbcc,White blood cell count,106,26.5
+pot,Potassium,90,22.5
+sod,Sodium,88,22.0
+pcv,Packed cell volume,71,17.8
+pc,Pus cells,65,16.2
+hemo,Haemoglobin,52,13.0
+su,Sugar grade,49,12.2
+sg,Specific gravity,47,11.8
+al,Albumin grade,46,11.5
+bgr,Blood glucose (random),44,11.0
+bu,Blood urea,19,4.8
+sc,Serum creatinine,17,4.2
+bp,Blood pressure,12,3.0
+age,Age,9,2.2
+pcc,Pus cell clumps,4,1.0
+ba,Bacteria,4,1.0
+htn,Hypertension,2,0.5
+dm,Diabetes mellitus,2,0.5
+cad,Coronary artery disease,2,0.5
+appet,Appetite,1,0.2
+pe,Pedal oedema,1,0.2
+ane,Anaemia,1,0.2

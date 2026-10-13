@@ -1,0 +1,3 @@
+model,record_id,error_type,p_ckd,n_missing_features
+logistic_regression,102,FN,0.276601,2
+logistic_regression,224,FN,0.384428,5

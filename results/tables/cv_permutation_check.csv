@@ -1,0 +1,6 @@
+model,repeat,mean_roc_auc
+random_forest,1,0.4171875
+random_forest,2,0.4569791666666666
+random_forest,3,0.5769791666666666
+random_forest,4,0.5533333333333333
+random_forest,5,0.5193749999999999

@@ -1,0 +1,26 @@
+{
+  "logistic_regression": {
+    "grid_search_seconds": 5.75,
+    "n_candidates": 10,
+    "n_fits": 50,
+    "refit_seconds": 0.06
+  },
+  "svm": {
+    "grid_search_seconds": 0.81,
+    "n_candidates": 16,
+    "n_fits": 80,
+    "refit_seconds": 0.069
+  },
+  "random_forest": {
+    "grid_search_seconds": 3.65,
+    "n_candidates": 18,
+    "n_fits": 90,
+    "refit_seconds": 0.281
+  },
+  "xgboost": {
+    "grid_search_seconds": 2.25,
+    "n_candidates": 12,
+    "n_fits": 60,
+    "refit_seconds": 0.143
+  }
+}

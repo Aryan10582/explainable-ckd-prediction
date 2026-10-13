@@ -1,0 +1,11 @@
+{
+  "model": "random_forest",
+  "explainer": "tree",
+  "artifact_load_and_explainer_build_s": 0.136,
+  "predict_ms_median": 46.49,
+  "predict_ms_p95": 58.21,
+  "explain_ms_median": 81.86,
+  "explain_ms_p95": 108.68,
+  "n_records_timed": 30,
+  "note": "Single-record calls including validation and preprocessing, on the machine in run_manifest.json."
+}
